@@ -115,4 +115,98 @@ main {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+.css-chart {
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  margin-top: 30px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.chart-wrapper {
+  display: flex;
+  align-items: flex-end;
+  height: 220px;
+  position: relative;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-right: 15px;
+   padding-bottom: 15px;
+    padding-top: 15px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.y-axis div {
+  height: 1px;
+  position: relative;
+}
+
+.y-axis div::before {
+  content: attr(data-value);
+  position: absolute;
+  left: -40px;
+  transform: translateY(50%);
+  white-space: nowrap;
+}
+
+.bar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  gap: 40px;
+}
+
+.bar {
+  width: 60px;
+  height: var(--bar-height);
+  background: var(--card-bg);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.bar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.bar::after {
+  content: attr(data-label);
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var();
+  color: rgb(15, 15, 15);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.bar:hover::after {
+  opacity: 5;
+}
+
+.bar.income {
+  background-color: #4caf50;
+}
+
+.bar.expenses {
+  background-color: #f44336;
+}
 
